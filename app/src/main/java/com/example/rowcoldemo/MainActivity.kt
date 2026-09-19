@@ -12,6 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.rowcoldemo.ui.theme.RowColDemoTheme
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.material3.Text
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,12 +39,28 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
+    // Пока здесь пусто, мы заполним это на следующем шаге
 }
 
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    RowColDemoTheme {
-        MainScreen()
-    }
+fun TextCell(text: String, modifier: Modifier = Modifier) {
+    val cellModifier = modifier
+        .padding(all = 4.dp)
+        .size(width = 100.dp, height = 100.dp)
+        .border(width = 4.dp, color = Color.Black)
+    Text(
+        text = text,
+        modifier = cellModifier.then(other = modifier),
+        fontSize = 80.sp,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center
+    )
 }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        RowColDemoTheme {
+            MainScreen()
+        }
+    }
